@@ -1,0 +1,13 @@
+*{
+    box-sizing: border-box;
+    width: 400px;
+    margin:auto;
+}
+
+
+label{
+    display: block;
+}
+input{
+    width: 100%;
+}

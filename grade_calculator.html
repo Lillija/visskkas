@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grade Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="calculator-container">
+      <h1>Grade Calculator</h1>
+
+      <p>Vārds</p>
+      <input class="name-input-field" type="text" />
+      <p>Iegūtie punkti</p>
+      <input class="your-points-input-field" type="text" />
+      <p>Maksimālie punkti</p>
+      <input class="max-point-input-field" type="text" />
+
+      <label for="type">Vērtēšanas shēma</label>
+      <select name="grades" id="type">
+        <option value="#"></option>
+        <option value="percentage">Procentuālā vērtība (0-100%)</option>
+        <option value="letters">Burtu vērtējums (A-F)</option>
+      </select>
+      <button id="calculate" type="submit">Calculate</button>
+    </div>
+    <h3 class="result"></h3>
+    <p class="result-statement"></p>
+    <script>
+        let results = document.getElementById("calculate");
+      let yourpointsInput = document.getElementById("your-points-input-field");
+      let maxpointsInput = document.getElementById("max-point-input-field");
+      let percent = document.getElementById("percentage");
+        let letter = document.getElementById("letters");
+        let select = document.getElementById("select");
+
+        results.addEventListener("click", pressClick);
+
+function pressClick() {
+    let num1 = parseInt(yourpointsInput.value);
+    let num2 = parseInt(maxpointsInput.value);
+
+    if (select.value == "percentage") {
+        output.innerHTML = answerText + (percentage(num1, num2));
+    }
+    else {
+        output.innerHTML = answerText + (letters(num1, num2));
+    }
+
+};
+let answerText = ("Atzīme: ");
+
+function percentage(num1, num2) {
+    if (select.value == "percentage") {
+        return ((yourpointsInput.value / maxpointsInput.value) * 100 + "%");
+    }
+    else {
+        letters(num1, num2);
+    }
+};
+function letters(num1, num2) {
+
+    let letters = ((yourpointsInput.value / maxpointsInput.value) * 100);
+    if (letters >= 90) {
+        return ("A");
+    }
+    else if (letters >= 80) {
+        return ("B");
+    }
+    else if (letters >= 70) {
+        return ("C");
+    }
+    else if (letters >= 60) {
+        return ("D");
+    }
+    else if (letters <= 60) {
+        return ("F");
+    }
+}
+    </script>
+  </body>
+</html>
